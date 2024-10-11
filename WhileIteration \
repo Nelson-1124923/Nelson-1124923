@@ -1,0 +1,101 @@
+using System;
+
+namespace _8_WhileIteration
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            bool showMenu = true;
+            while (showMenu)
+            {
+                showMenu = MainMenu();
+            }
+        }
+
+        private static bool MainMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("Elige una opción:");
+            Console.WriteLine("1) Imprimir números");
+            Console.WriteLine("2) Juego de adivinanza");
+            Console.WriteLine("3) Salir");
+
+            string input = Console.ReadLine();
+
+            if (input == "1")
+            {
+                PrintNumbers();
+                return true;
+            }
+            else if (input == "2")
+            {
+                PlayGuessingGame();
+                return true;
+            }
+            else if (input == "3")
+            {
+                return false; // Salir del programa
+            }
+            else
+            {
+                Console.WriteLine("Opción no válida, intenta de nuevo.");
+                Console.ReadLine(); // Pausa para que el usuario vea el mensaje
+                return true;
+            }
+        }
+
+        private static void PrintNumbers()
+        {
+            Console.Clear();
+            Console.WriteLine("Introduce un número:");
+            string userInput = Console.ReadLine();
+
+            // Validación simple de entrada
+            int number;
+            if (int.TryParse(userInput, out number))
+            {
+                for (int i = 1; i <= number; i++)
+                {
+                    Console.Write(i + " ");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Por favor, introduce un número válido.");
+            }
+
+            Console.ReadLine(); // Pausa antes de volver al menú
+        }
+
+        private static void PlayGuessingGame()
+        {
+            Console.Clear();
+            Console.WriteLine("Juego de adivinanza. Adivina un número entre 1 y 10:");
+
+            Random random = new Random();
+            int randomNumber = random.Next(1, 11);
+            bool isCorrect = false;
+            int attempts = 0;
+
+            while (!isCorrect)
+            {
+                Console.WriteLine("Introduce tu intento:");
+                string guess = Console.ReadLine();
+                attempts++;
+
+                if (guess == randomNumber.ToString())
+                {
+                    isCorrect = true;
+                    Console.WriteLine($"¡Correcto! Lo lograste en {attempts} intentos.");
+                }
+                else
+                {
+                    Console.WriteLine("Incorrecto, intenta de nuevo.");
+                }
+            }
+
+            Console.ReadLine(); // Pausa antes de volver al menú
+        }
+    }
+}
