@@ -1,0 +1,29 @@
+using System;
+using System.IO;
+
+namespace BibliotecaEjemplo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Solicitar entrada al usuario
+            Console.WriteLine("Escribe algo:");
+            string reply = Console.ReadLine();
+
+            // Guardar en un archivo de texto (sin manejo avanzado de errores)
+            try
+            {
+                File.WriteAllText("output.txt", reply);  // Se usa una ruta simple en lugar de una ruta completa
+                Console.WriteLine("Texto guardado correctamente en 'output.txt'");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Ocurrió un error: " + e.Message);
+            }
+
+            // Pausar para que el usuario vea el resultado
+            Console.ReadLine();
+        }
+    }
+}
