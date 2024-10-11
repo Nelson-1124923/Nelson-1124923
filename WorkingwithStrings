@@ -1,0 +1,31 @@
+using System;
+
+namespace _9_WorkingWithStrings
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Trabajando con cadenas de texto básicas
+            string myString = "That summer we took three across the board ";
+
+            // Convertir todo a mayúsculas
+            myString = myString.ToUpper();
+
+            // Reemplazar espacios con guiones
+            myString = myString.Replace(" ", "--");
+
+            // Remover parte de la cadena
+            myString = myString.Remove(6, 14);
+
+            // Mostrar longitud antes y después de recortar espacios
+            Console.WriteLine("Longitud antes: " + myString.Length);
+            myString = myString.Trim();
+            Console.WriteLine("Longitud después: " + myString.Length);
+
+            // Mostrar el resultado final
+            Console.WriteLine(myString);
+            Console.ReadLine();
+        }
+    }
+}
