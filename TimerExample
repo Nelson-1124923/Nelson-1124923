@@ -1,0 +1,38 @@
+using System;
+using System.Timers;
+
+namespace TimerExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Timer myTimer = new Timer(2000);
+
+            myTimer.Elapsed += MyTimer_Elapsed;
+            myTimer.Elapsed += MyTimer_Elapsed1;
+
+            myTimer.Start();
+
+            Console.WriteLine("Presiona enter para eliminar el evento de color rojo.");
+            Console.ReadLine();
+
+            myTimer.Elapsed -= MyTimer_Elapsed1;
+            Console.WriteLine("Evento de color rojo eliminado.");
+
+            Console.ReadLine();
+        }
+
+        private static void MyTimer_Elapsed1(object sender, ElapsedEventArgs e)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Tiempo transcurrido (rojo): {0:HH:mm:ss:fff}", e.SignalTime);
+        }
+
+        private static void MyTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Tiempo transcurrido (blanco): {0:HH:mm:ss:fff}", e.SignalTime);
+        }
+    }
+}
