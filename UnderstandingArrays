@@ -1,0 +1,50 @@
+using System;
+
+namespace UnderstandingArrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Definiendo un array de enteros con algunos números
+            int[] numbers = new int[] { 4, 8, 15, 16, 23, 42 };
+
+            // Mostrando un valor del array
+            Console.WriteLine("Número en la posición 1: " + numbers[1]);
+            Console.WriteLine("Tamaño del array: " + numbers.Length);
+
+            // Array de nombres
+            string[] names = new string[] { "Eddie", "Alex", "Michael", "David Lee" };
+
+            // Usando un bucle for para mostrar los nombres
+            Console.WriteLine("\nNombres en el array:");
+            for (int i = 0; i < names.Length; i++)
+            {
+                Console.WriteLine(names[i]);
+            }
+
+            // Usando un bucle foreach para mostrar los nombres
+            Console.WriteLine("\nUsando foreach para mostrar los nombres:");
+            foreach (string name in names)
+            {
+                Console.WriteLine(name);
+            }
+
+            // Convertir una cadena a un array de caracteres y revertirla
+            string zig = "You can get what you want out of life if you help enough other people get what they want.";
+
+            char[] charArray = zig.ToCharArray();
+            Array.Reverse(charArray);
+
+            // Mostrar la cadena invertida
+            Console.WriteLine("\nCadena invertida:");
+            foreach (char zigChar in charArray)
+            {
+                Console.Write(zigChar);
+            }
+
+            // Pausa para que la consola no se cierre automáticamente
+            Console.ReadLine();
+        }
+    }
+}
